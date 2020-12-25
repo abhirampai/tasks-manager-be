@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiProperty, ApiResponse, ApiResponseProperty } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiProperty, ApiResponse, ApiResponseProperty, ApiTags } from '@nestjs/swagger';
 import { createTaskResponse } from './models/createTaskResponse.model';
 import { createTaskDto, getTaskFilter, updateTaskStatus } from './dto';
 import { TaskStatus } from './models/task-status.enum';
@@ -10,6 +10,7 @@ import { Task } from './entity/Task.entity';
 import { error404Model } from './models/error404Model.model';
 import {error400Model} from './models/error400Model.model'
 
+@ApiTags('Task-Management')
 @Controller('tasks')
 export class TasksController {
     constructor(private tasksService:TasksService){}

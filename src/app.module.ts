@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TasksModule } from './tasks/tasks.module';
+import { AuthModule } from './auth/auth.module';
 require('dotenv').config();
 @Module({
   imports: [
@@ -15,7 +16,8 @@ require('dotenv').config();
       useUnifiedTopology: true,
       useNewUrlParser: true,
     }),
-    TasksModule],
+    TasksModule,
+    AuthModule],
 
 })
 export class AppModule {}
