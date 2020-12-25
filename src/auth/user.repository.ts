@@ -2,7 +2,7 @@ import { EntityRepository, Repository } from "typeorm";
 import { AuthCredentialLoginDTO, AuthCredentialSignUpDTO } from "./dto";
 import { User } from "./entity/User.entity";
 import * as bcrypt from 'bcryptjs';
-import { BadRequestException, UnauthorizedException } from "@nestjs/common";
+import { BadRequestException, ConflictException, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 
 
@@ -30,7 +30,7 @@ export class UserRepository extends Repository<User>{
             }
         }
         else{
-            throw new BadRequestException('User with this username already exist')
+            throw new ConflictException('User with this username already exist')
         }
     }
 

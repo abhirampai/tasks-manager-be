@@ -1,5 +1,6 @@
 import { ObjectId } from "mongoose";
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { Task } from "src/tasks/entity/Task.entity";
+import { Column, Entity, ObjectIdColumn, OneToMany } from "typeorm";
 
 @Entity('user')
 export class User {
@@ -11,4 +12,7 @@ export class User {
 
     @Column()
     password:string
+
+    @OneToMany(type=> Task, task=> task.user,{eager: true})
+    tasks:Task[]
 }
