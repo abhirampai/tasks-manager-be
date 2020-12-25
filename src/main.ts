@@ -6,6 +6,11 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
+  if (process.env.NODE_ENV === 'development') {
+    app.enableCors();
+  } else {
+    app.enableCors({ origin: '*' });
+  }
 
 
   const options = new DocumentBuilder()

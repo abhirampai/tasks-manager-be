@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsIn, IsNotEmpty } from "class-validator";
-import { TaskStatus } from "../models/task.model";
+import { TaskStatus } from "../models/task-status.enum";
 
 export class getTaskFilter {
     @ApiProperty({type:String,example:'string'})
@@ -8,6 +8,5 @@ export class getTaskFilter {
     status:TaskStatus
 
     @ApiProperty({type:String,example:'string'})
-    @IsNotEmpty()
     searchTerm:string
 }
