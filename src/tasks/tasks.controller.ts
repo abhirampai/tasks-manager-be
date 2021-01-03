@@ -56,7 +56,7 @@ export class TasksController {
      }
 
     @Delete(':id')
-    @ApiOkResponse({description:'Task Retrieved',type:createTaskResponse})
+    @ApiOkResponse({description:'Task Deleted',type:createTaskResponse})
     @ApiNotFoundResponse({description:'Such a Task Does not exist',type:error404Model})
     @ApiBadRequestResponse({description:'Bad Request',type:error400Model})
     deleteTask(
@@ -67,11 +67,12 @@ export class TasksController {
     }
 
     @Patch(':id')
-    @ApiOkResponse({description:'Task Retrieved',type:updateTaskResponse})
+    @ApiOkResponse({description:'Task Updated',type:updateTaskResponse})
     @ApiNotFoundResponse({description:'Such a Task Does not exist',type:error404Model})
     @ApiBadRequestResponse({description:'Bad Request',type:error400Model})
     updateTask(
-        @Param('id') _id:string,@Body('status',TaskStatusValidationPipe) updateTaskDto:updateTaskStatus,
+        @Param('id') _id:string,
+        @Body('status',TaskStatusValidationPipe) updateTaskDto:updateTaskStatus,
         @GetUser() user:User,
         ) {
         return this.tasksService.updateTaskStatus(_id,updateTaskDto,user)

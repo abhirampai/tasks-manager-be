@@ -36,7 +36,7 @@ export class TasksService {
         {
             throw new BadRequestException('Enter A correct Id')
         }
-        const found = await this.taskRepository.findOne({id:ObjectId(id),user:user})
+        const found = await this.taskRepository.findOne({_id:ObjectId(id),user:user})
          if(!found){
              throw new NotFoundException('Such a task with id '+id+' does not exist')
          }

@@ -7,7 +7,7 @@ import { TaskStatus } from "../models/task-status.enum";
 export class Task {
 
     @ObjectIdColumn()
-    id:ObjectId;
+    _id:ObjectId;
 
     @Column()
     title:string;
